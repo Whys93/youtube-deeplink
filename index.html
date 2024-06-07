@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Open YouTube App</title>
+    <script type="text/javascript">
+        function openYouTubeApp() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // iOS detection
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location = "youtube://B-g0ksgxKKo";
+            }
+            // Android detection
+            else if (/android/i.test(userAgent)) {
+                window.location = "intent://www.youtube.com/live/B-g0ksgxKKo#Intent;scheme=https;package=com.google.android.youtube;end";
+            }
+            // Fallback to web URL
+            else {
+                window.location = "https://youtube.com/live/B-g0ksgxKKo";
+            }
+        }
+    </script>
+</head>
+<body onload="openYouTubeApp()">
+    <a href="https://youtube.com/live/B-g0ksgxKKo">Watch Live Video</a>
+</body>
+</html>
